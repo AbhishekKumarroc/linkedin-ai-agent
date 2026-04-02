@@ -1,0 +1,9 @@
+# Secrets
+.env
+
+# Virtual Environment
+venv/
+__pycache__/
+
+# Mac system files (if you ever use one)
+.DS_Store
