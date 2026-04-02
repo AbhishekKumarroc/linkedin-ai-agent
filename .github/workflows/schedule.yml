@@ -1,18 +1,18 @@
-name: Daily AI LinkedIn Poster
+name: AI Automation Content Pipeline
 
 on:
   schedule:
-    - cron: '30 4 * * *'  # 10:00 AM IST
-    - cron: '30 14 * * *' # 08:00 PM IST
+    - cron: '30 4 * * *'  # 10:00 AM IST (Morning News Roundup)
+    - cron: '30 14 * * *' # 08:00 PM IST (Evening Journey Post)
+    - cron: '0 * * * *'   # Hourly (Check Telegram for Mobile Updates)
   
-  # This line allows you to trigger the script manually by clicking a button!
-  workflow_dispatch: 
+  workflow_dispatch:      # Allows manual trigger for testing
 
 jobs:
-  run-agent:
+  run-pipeline:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # This gives the bot permission to save history.txt back to your repo
+      contents: write # Essential for the bot to save files back to your repo
 
     steps:
       - name: Checkout repository
@@ -28,6 +28,15 @@ jobs:
           python -m pip install --upgrade pip
           pip install google-generativeai requests feedparser beautifulsoup4 python-dotenv urllib3
 
+      # STEP 1: Check Telegram and update daily_log.txt if you sent a message
+      - name: Check Telegram for Mobile Updates
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: python telegram_listener.py
+
+      # STEP 2: Run the main AI Agent (decides to post news or journey based on time)
       - name: Run AI Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -35,16 +44,16 @@ jobs:
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
         run: python main.py
 
-      - name: Save history.txt back to repository
+      # STEP 3: Sync all changes (history.txt and daily_log.txt) back to GitHub
+      - name: Sync Repository Changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add history.txt
-          # If there are changes, commit and push them
+          git add history.txt daily_log.txt
           if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Update posting history [skip ci]"
+            git commit -m "Automated sync: History & Logs [skip ci]"
             git push
-            echo "✅ History updated in repository."
+            echo "✅ Repository updated successfully."
           else
-            echo "yml No changes detected in history."
+            echo "💤 No changes detected in files."
           fi
