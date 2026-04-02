@@ -2,8 +2,8 @@ name: Daily AI LinkedIn Poster
 
 on:
   schedule:
-    # Runs at 4:30 AM UTC every day, which is exactly 10:00 AM IST (India Standard Time)
-    - cron: '30 4 * * *'
+    - cron: '30 4 * * *'  # 10:00 AM IST
+    - cron: '30 14 * * *' # 08:00 PM IST
   
   # This line allows you to trigger the script manually by clicking a button!
   workflow_dispatch: 
