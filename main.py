@@ -107,21 +107,24 @@ def post_to_linkedin(post_text):
 
 # ================== MAIN ==================
 if __name__ == "__main__":
-    print("🚀 Starting AI LinkedIn Agent...")
+    current_hour = datetime.now().hour # UTC time
     
-    print("Fetching top AI news...")
-    top_news = get_top_news(limit=3)
-    
-    if not top_news:
-        print("❌ No news found.")
-    else:
-        print(f"✅ Found {len(top_news)} trending stories. Generating roundup post...")
-        post_text = generate_roundup_post(top_news)
-        
-        print("\n--- PREVIEW OF POST ---")
-        print(post_text)
-        print("-----------------------\n")
-        
-        print("Posting directly to LinkedIn...")
+    # 4:30 AM UTC = 10:00 AM IST
+    if current_hour == 4:
+        print("🌅 Morning Mode: Fetching AI News...")
+        news = get_top_news(limit=3)
+        if news:
+            post = generate_roundup_post(news)
+            post_to_linkedin(post)
+            save_history([item['link'] for item in news])
+            
+    # 2:30 PM UTC = 8:00 PM IST
+    elif current_hour == 14:
+        print("🌇 Evening Mode: Generating Journey Post...")
+        post = generate_journey_post() # Reads from daily_log.txt
+        if post:
+            post_to_linkedin(post)
+            # Optional: Clear the log after posting so it's ready for tomorrow
+            open("daily_log.txt", "w").close()
         post_to_linkedin(post_text)
         print("🎉 Done! Go check your LinkedIn profile.")
