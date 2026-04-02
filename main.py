@@ -18,7 +18,7 @@ if not GEMINI_API_KEY or not LINKEDIN_ACCESS_TOKEN or not LINKEDIN_PERSON_URN:
 
 genai.configure(api_key=GEMINI_API_KEY)
 # Using gemini-1.5-flash as it is the current supported free tier model
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.5-flash')
 
 RSS_FEEDS = [
     "https://techcrunch.com/tag/artificial-intelligence/feed/",
