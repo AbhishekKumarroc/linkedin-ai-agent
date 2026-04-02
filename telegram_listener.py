@@ -5,10 +5,10 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Config
+# Config at the top of telegram_listener.py
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-GITHUB_TOKEN = os.getenv("LINKEDIN_ACCESS_TOKEN") # Reusing your existing Github token if it has 'repo' scope
+GITHUB_TOKEN = os.getenv("GH_PAT")  # This matches the Secret name you just made
 REPO = "Abhishekkumarroc/linkedin-ai-agent"
 FILE_PATH = "daily_log.txt"
 
