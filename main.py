@@ -2,12 +2,8 @@ import os
 from dotenv import load_dotenv
 import feedparser
 import requests
-import urllib3
 from bs4 import BeautifulSoup
 import google.generativeai as genai
-
-# Suppress SSL warnings from the corporate firewall bypass
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 load_dotenv()
 
@@ -21,7 +17,8 @@ if not GEMINI_API_KEY or not LINKEDIN_ACCESS_TOKEN or not LINKEDIN_PERSON_URN:
     exit()
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2.5-flash')
+# Using gemini-1.5-flash as it is the current supported free tier model
+model = genai.GenerativeModel('gemini-1.5-flash')
 
 RSS_FEEDS = [
     "https://techcrunch.com/tag/artificial-intelligence/feed/",
@@ -37,8 +34,7 @@ def get_top_news(limit=3):
     all_news = []
     for url in RSS_FEEDS:
         try:
-            # Added verify=False here for the RSS feeds just in case
-            response = requests.get(url, verify=False, timeout=10)
+            response = requests.get(url, timeout=10)
             feed = feedparser.parse(response.content)
             
             for entry in feed.entries[:3]:
@@ -96,8 +92,7 @@ def post_to_linkedin(post_text):
         }
     }
     
-    # Added verify=False to punch through the corporate firewall
-    response = requests.post(url, headers=headers, json=payload, verify=False)
+    response = requests.post(url, headers=headers, json=payload)
     
     if response.status_code == 201:
         print("✅ Successfully auto-posted to LinkedIn!")
