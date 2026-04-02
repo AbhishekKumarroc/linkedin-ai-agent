@@ -1,6 +1,6 @@
 # 🚀 Autonomous LinkedIn AI News Agent
 
-A cloud-native Python agent that curates trending AI news, synthesizes professional insights using Google Gemini 1.5 Flash, and publishes a "Daily AI Roundup" directly to LinkedIn.
+A cloud-native Python agent that curates trending AI news, synthesizes professional insights using Google Gemini 2.5 Flash, and publishes a "Daily AI Roundup" directly to LinkedIn.
 
 ## ✨ Key Features
 * **100% Cloud-Based:** Runs on **GitHub Actions**—no local machine required.
