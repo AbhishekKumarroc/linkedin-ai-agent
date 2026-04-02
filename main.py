@@ -57,15 +57,20 @@ def generate_roundup_post(news_items):
     for i, item in enumerate(news_items, 1):
         news_text += f"\nNews {i}:\nTitle: {item['title']}\nSummary: {item['summary']}\n"
 
-    prompt = f"""Write a very punchy, professional LinkedIn "Daily AI Roundup" post based on these top updates:
+    prompt = f"""Write a high-quality, insightful LinkedIn "Daily AI Roundup" post based on these updates:
 {news_text}
 
-STRICT RULES:
-1. Output exactly the post content and nothing else. No conversational filler, no introductory text like "Here is your post".
-2. Start with a strong hook about today's rapid AI advancements.
-3. Use a bulleted list to briefly summarize the 3 news items in plain English.
-4. End with one thought-provoking question for the audience.
-5. Add exactly 4 relevant hashtags at the bottom."""
+STRICT STYLING & CONTENT RULES:
+1. START with a strong, one-sentence hook about the state of AI innovation followed by a relevant emoji (like 🚀 or ✨).
+2. FOR EACH news item, write a dedicated 3-4 sentence paragraph. 
+3. FORMAT: Start each news paragraph with a unique, relevant emoji.
+4. CONTENT: Explain exactly what happened and provide a deep insight into why this matters for the tech industry or the environment. Do not just summarize; provide value.
+5. NO MARKDOWN: DO NOT use any asterisks like **bold** or *italics*. Use only plain text.
+6. SPACING: Ensure there is a full empty line between every paragraph so it is easy to read.
+7. CONCLUSION: End with a thoughtful, open-ended question to engage the audience.
+8. HASHTAGS: Add exactly 5 relevant hashtags at the very bottom.
+
+Output exactly the post content and nothing else."""
     
     response = model.generate_content(prompt)
     return response.text.strip()
