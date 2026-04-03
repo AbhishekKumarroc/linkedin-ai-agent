@@ -22,11 +22,25 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-2.5-flash')
 
 RSS_FEEDS = [
-    "https://techcrunch.com/tag/artificial-intelligence/feed/",
-    "https://openai.com/index/feed/",
+    # --- The "Fastest" Breaking News ---
+    "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
+    "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
+    "https://venturebeat.com/category/ai/feed/",
+    
+    # --- Deep Tech & Open Source (Gemma/Llama news lives here) ---
     "https://huggingface.co/blog/feed.xml",
-    "https://blog.google/products/ai/feed/",
-    "https://venturebeat.com/category/ai/feed/"
+    "https://machinelearningmastery.com/feed/",
+    "https://towardsdatascience.com/feed",
+    
+    # --- AI Industry Specific ---
+    "https://www.artificialintelligence-news.com/feed/",
+    "https://www.unite.ai/feed/",
+    "https://synthedia.substack.com/feed",
+    
+    # --- Big Tech Official (Straight from the source) ---
+    "https://blog.google/technology/ai/rss/",
+    "https://openai.com/news/rss.xml",
+    "https://aws.amazon.com/blogs/machine-learning/feed/"
 ]
 
 # ============================================
@@ -40,7 +54,7 @@ def get_top_news(limit=3):
             response = requests.get(url, timeout=10)
             feed = feedparser.parse(response.content)
             
-            for entry in feed.entries[:5]: # Look at top 5 just in case some are duplicates
+            for entry in feed.entries[:10]: # Look at top 5 just in case some are duplicates
                 title = getattr(entry, 'title', '')
                 link = getattr(entry, 'link', '') # 2. Grab the link!
                 
@@ -62,21 +76,21 @@ def get_top_news(limit=3):
     return list(unique_news)[:limit]
 
 def generate_roundup_post(news_text):
-    prompt = f"""Write a high-quality, professional LinkedIn "Daily AI Roundup" post based on these updates:
+    prompt = f"""You are an expert AI Automation Engineer. From the list below, pick ONLY the TOP 3 stories that are most relevant to:
+1. AI Agents & Autonomy (e.g., Google's new ADK or Agentic workflows)
+2. Open-source model breakthroughs (e.g., Gemma 4)
+3. Cloud Infrastructure for AI (e.g., GKE or NVIDIA updates)
+
+News Stories:
 {news_text}
 
-STRICT STYLING & CONTENT RULES:
-1. HOOK: Start with a powerful one-sentence hook about the trajectory of AI innovation followed by a relevant emoji.
-2. STRUCTURE: For EACH news item, write a dedicated 3-4 sentence paragraph.
-3. FORMAT: Start each paragraph with a unique emoji. Use a BOLD-LIKE header by writing the first sentence in clear, punchy text.
-4. INSIGHT: Explain the "Why" — why this matters for the future of tech.
-5. NO MARKDOWN: DO NOT use **bold** or *italics*. Use only plain text.
-6. SPACING: Ensure a full empty line between every paragraph.
-7. CRITICAL RULE: DO NOT mention "100 Days of AI", "Day X", or any daily challenge. This is a pure industry news update.
-8. HASHTAGS: Add exactly 5 relevant hashtags at the bottom (e.g., #AI #TechNews #GenerativeAI).
-
-Output exactly the post content and nothing else."""
-    
+STRICT RULES:
+- Post exactly 3 stories.
+- Use a professional, punchy hook.
+- DO NOT mention 'Day 1' or '100 Days Challenge' in this morning post.
+- For each story, explain the "Technical Why" it matters to developers.
+- Use emojis for headers, but NO bold or italics.
+"""
     response = model.generate_content(prompt)
     return response.text.strip()
 
@@ -131,11 +145,19 @@ if __name__ == "__main__":
     # 4 UTC = 9:30 AM to 10:30 AM IST
     if current_hour == 4:
         print("🌅 Scheduled Morning Mode: Fetching AI News...")
-        news = get_top_news(limit=3)
+        news = get_top_news(limit=15)
         if news:
-            post = generate_roundup_post(news)
-            post_to_linkedin(post)
-            save_history([item['link'] for item in news])
+        post = generate_roundup_post(news)
+        post_to_linkedin(post)
+        
+        # Smart Saving: Only save links that Gemini actually included in the post
+        posted_links = [item['link'] for item in news if item['title'] in post]
+        
+        # If the title matching is tricky, just save the top 3 we sent:
+        if not posted_links:
+            posted_links = [item['link'] for item in news[:3]]
+            
+        save_history(posted_links)
             
     # 14 UTC = 7:30 PM to 8:30 PM IST
     elif current_hour == 14:
@@ -148,10 +170,18 @@ if __name__ == "__main__":
     # MANUAL OVERRIDE (For when you click the button yourself)
     else:
         print("🚀 Manual Override Triggered: Forcing Morning News Post...")
-        news = get_top_news(limit=3)
+        news = get_top_news(limit=15)
         if news:
-            post = generate_roundup_post(news)
-            post_to_linkedin(post)
-            save_history([item['link'] for item in news])
+        post = generate_roundup_post(news)
+        post_to_linkedin(post)
+        
+        # Smart Saving: Only save links that Gemini actually included in the post
+        posted_links = [item['link'] for item in news if item['title'] in post]
+        
+        # If the title matching is tricky, just save the top 3 we sent:
+        if not posted_links:
+            posted_links = [item['link'] for item in news[:3]]
+            
+        save_history(posted_links)
         else:
             print("💤 No new news found in RSS feeds.")
