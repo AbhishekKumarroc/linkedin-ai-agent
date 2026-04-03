@@ -154,6 +154,39 @@ def save_history(links):
         for link in links:
             f.write(link + "\n")
 
+def generate_journey_post():
+    """Reads the daily log and turns Telegram notes into a professional LinkedIn post."""
+    try:
+        # 1. Read your Telegram notes from the log file
+        with open("daily_log.txt", "r") as f:
+            user_notes = f.read().strip()
+        
+        if not user_notes:
+            print("💤 daily_log.txt is empty. Nothing to post tonight.")
+            return None
+
+        # 2. Ask Gemini to format these notes professionally
+        prompt = f"""
+        You are an AI Automation Engineer. Turn the following rough notes into a professional 
+        LinkedIn 'Day X/100' journey post. 
+        
+        Notes: {user_notes}
+
+        STRICT FORMATTING:
+        - Start with a punchy hook about the day's progress.
+        - Use the '↳ The News' and '↳ The Impact' structure for 2-3 main achievements.
+        - Keep the tone technical, professional, and bold.
+        - DO NOT use markdown bold (no **stars**).
+        - End with 5 relevant hashtags including #100DaysOfAI #DevOps.
+        """
+        
+        response = model.generate_content(prompt)
+        return response.text.strip()
+        
+    except Exception as e:
+        print(f"❌ Error generating journey post: {e}")
+        return None
+
 def post_to_linkedin(post_text):
     url = "https://api.linkedin.com/v2/ugcPosts"
     headers = {
@@ -206,13 +239,16 @@ if __name__ == "__main__":
                 posted_links = [item['link'] for item in news[:3]]
             save_history(posted_links)
             
-    # 14 UTC = 7:30 PM to 8:30 PM IST
+    # 14 UTC = 8:00 PM IST
     elif current_hour == 14:
         print("🌇 Scheduled Evening Mode: Generating Journey Post...")
         post = generate_journey_post()
         if post:
             post_to_linkedin(post)
-            open("daily_log.txt", "w").close() 
+            # THIS IS THE ERASER: It only runs once a day at 8 PM
+            with open("daily_log.txt", "w") as f:
+                f.write("") 
+            print("🧹 daily_log.txt cleared for tomorrow.")
             
     # ALL OTHER HOURS (The Hourly Telegram Check)
     else:
