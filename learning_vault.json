@@ -1,7 +1,17 @@
 {
-  "day_1": "Learned about the difference between DevOps and AI Automation. Set up Gemini API.",
-  "day_2": "Mastered Git configuration, commit amending, and securing secrets with .gitignore.",
-  "day_3": "Built a Python-based RSS news aggregator and connected it to the LinkedIn API.",
-  "day_4": "Automated memory using a history.txt file and deployed to GitHub Actions cloud.",
-  "day_5": "Learned about LLM Hallucinations and how to use System Instructions to force specific output styles."
+  "1": [
+    "Set up GitHub Actions CI/CD",
+    "Build Telegram API Listener",
+    "Automate LinkedIn API Authentication"
+  ],
+  "2": [
+    "Upgrade Gemini System Prompt",
+    "Test JSON structured output",
+    "Add custom filtering logic to News"
+  ],
+  "3": [
+    "Deploy script to Cloud Run",
+    "Build a webhook listener",
+    "Test real-time execution"
+  ]
 }
