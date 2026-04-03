@@ -75,22 +75,30 @@ def get_top_news(limit=3):
     unique_news = {item['title']: item for item in all_news}.values()
     return list(unique_news)[:limit]
 
-def generate_roundup_post(news_text):
-    prompt = f"""You are an expert AI Automation Engineer. From the list below, pick ONLY the TOP 3 stories that are most relevant to:
-1. AI Agents & Autonomy (e.g., Google's new ADK or Agentic workflows)
-2. Open-source model breakthroughs (e.g., Gemma 4)
-3. Cloud Infrastructure for AI (e.g., GKE or NVIDIA updates)
+def generate_roundup_post(news_list):
+    # 1. Format the news with Links so Gemini can use them
+    news_text = ""
+    for item in news_list:
+        news_text += f"Title: {item['title']}\nSummary: {item['summary']}\nLink: {item['link']}\n\n"
 
-News Stories:
+    # 2. The Strict "Top Creator" Prompt
+    prompt = f"""You are a highly respected AI Automation Engineer on LinkedIn. Write a highly engaging, professional daily news roundup.
+Choose the TOP 3 most impactful stories from this list:
 {news_text}
 
-STRICT RULES:
-- Post exactly 3 stories.
-- Use a professional, punchy hook.
-- DO NOT mention 'Day 1' or '100 Days Challenge' in this morning post.
-- For each story, explain the "Technical Why" it matters to developers.
-- Use emojis for headers, but NO bold or italics.
-"""
+STRICT FORMATTING RULES:
+1. HOOK: One punchy, engaging sentence about the state of AI today.
+2. THE UPDATES: For each story, use exactly this layout:
+   [Emoji] Headline (Write a catchy headline, DO NOT use markdown bold)
+   ↳ The News: 1 sentence summary.
+   ↳ The Impact: 1 sentence explaining why this matters to developers or businesses.
+   ↳ Link: [Insert the exact URL here]
+3. SPACING: Leave a full empty line between each story so it is easy to read.
+4. NO ROBOT SPEAK: Do not use labels like "Technical Why" or "In conclusion". Sound human, sharp, and authoritative.
+5. HASHTAGS: End with 3-5 relevant hashtags (e.g., #AIAutomation #TechNews #Agents).
+
+Output ONLY the final LinkedIn post."""
+    
     response = model.generate_content(prompt)
     return response.text.strip()
 
