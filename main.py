@@ -155,9 +155,13 @@ if __name__ == "__main__":
         print("🌅 Scheduled Morning Mode: Fetching AI News...")
         news = get_top_news(limit=15)
         if news:
-            post = generate_roundup_post(news) # This line MUST be indented
-            post_to_linkedin(post)             # This line MUST be indented
-            save_history([item['link'] for item in news]) # This line MUST be indented
+            post = generate_roundup_post(news)
+            post_to_linkedin(post)
+            # Smart Saving
+            posted_links = [item['link'] for item in news if item['title'] in post]
+            if not posted_links:
+                posted_links = [item['link'] for item in news[:3]]
+            save_history(posted_links)
             
     # 14 UTC = 7:30 PM to 8:30 PM IST
     elif current_hour == 14:
@@ -165,16 +169,8 @@ if __name__ == "__main__":
         post = generate_journey_post()
         if post:
             post_to_linkedin(post)
-            # Clear the log so it's fresh for tomorrow
             open("daily_log.txt", "w").close() 
             
-    # MANUAL OVERRIDE (For testing)
+    # ALL OTHER HOURS (The Hourly Telegram Check)
     else:
-        print("🚀 Manual Override Triggered: Forcing Morning News Post...")
-        news = get_top_news(limit=15)
-        if news:
-            post = generate_roundup_post(news)
-            post_to_linkedin(post)
-            save_history([item['link'] for item in news])
-        else:
-            print("💤 No new news found in RSS feeds.")
+        print("💤 Hourly check complete. Telegram updated. No LinkedIn post scheduled right now.")
