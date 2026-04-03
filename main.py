@@ -32,49 +32,66 @@ RSS_FEEDS = [
 # ============================================
 
 def get_top_news(limit=3):
+    history = load_history()  # 1. Load the bot's memory
     all_news = []
+    
     for url in RSS_FEEDS:
         try:
             response = requests.get(url, timeout=10)
             feed = feedparser.parse(response.content)
             
-            for entry in feed.entries[:3]:
+            for entry in feed.entries[:5]: # Look at top 5 just in case some are duplicates
                 title = getattr(entry, 'title', '')
-                summary = getattr(entry, 'summary', getattr(entry, 'description', ''))[:400]
+                link = getattr(entry, 'link', '') # 2. Grab the link!
                 
+                # 3. THE MAGIC CHECK: If we already posted this link, skip it entirely!
+                if link in history:
+                    continue
+                
+                summary = getattr(entry, 'summary', getattr(entry, 'description', ''))[:400]
                 soup = BeautifulSoup(summary, 'html.parser')
                 clean_summary = soup.get_text()
                 
-                if title:
-                    all_news.append({'title': title, 'summary': clean_summary})
+                if title and link:
+                    # 4. Add the 'link' to the dictionary so save_history can use it later
+                    all_news.append({'title': title, 'summary': clean_summary, 'link': link})
         except Exception as e:
             continue
             
     unique_news = {item['title']: item for item in all_news}.values()
     return list(unique_news)[:limit]
 
-def generate_roundup_post(news_items):
-    news_text = ""
-    for i, item in enumerate(news_items, 1):
-        news_text += f"\nNews {i}:\nTitle: {item['title']}\nSummary: {item['summary']}\n"
-
-    prompt = f"""Write a high-quality, insightful LinkedIn "Daily AI Roundup" post based on these updates:
+def generate_roundup_post(news_text):
+    prompt = f"""Write a high-quality, professional LinkedIn "Daily AI Roundup" post based on these updates:
 {news_text}
 
 STRICT STYLING & CONTENT RULES:
-1. START with a strong, one-sentence hook about the state of AI innovation followed by a relevant emoji (like 🚀 or ✨).
-2. FOR EACH news item, write a dedicated 3-4 sentence paragraph. 
-3. FORMAT: Start each news paragraph with a unique, relevant emoji.
-4. CONTENT: Explain exactly what happened and provide a deep insight into why this matters for the tech industry or the environment. Do not just summarize; provide value.
-5. NO MARKDOWN: DO NOT use any asterisks like **bold** or *italics*. Use only plain text.
-6. SPACING: Ensure there is a full empty line between every paragraph so it is easy to read.
-7. CONCLUSION: End with a thoughtful, open-ended question to engage the audience.
-8. HASHTAGS: Add exactly 5 relevant hashtags at the very bottom.
+1. HOOK: Start with a powerful one-sentence hook about the trajectory of AI innovation followed by a relevant emoji.
+2. STRUCTURE: For EACH news item, write a dedicated 3-4 sentence paragraph.
+3. FORMAT: Start each paragraph with a unique emoji. Use a BOLD-LIKE header by writing the first sentence in clear, punchy text.
+4. INSIGHT: Explain the "Why" — why this matters for the future of tech.
+5. NO MARKDOWN: DO NOT use **bold** or *italics*. Use only plain text.
+6. SPACING: Ensure a full empty line between every paragraph.
+7. CRITICAL RULE: DO NOT mention "100 Days of AI", "Day X", or any daily challenge. This is a pure industry news update.
+8. HASHTAGS: Add exactly 5 relevant hashtags at the bottom (e.g., #AI #TechNews #GenerativeAI).
 
 Output exactly the post content and nothing else."""
     
     response = model.generate_content(prompt)
     return response.text.strip()
+
+def load_history():
+    """Loads previously posted links to avoid duplicates."""
+    if not os.path.exists("history.txt"):
+        return []
+    with open("history.txt", "r") as f:
+        return [line.strip() for line in f.readlines()]
+
+def save_history(links):
+    """Saves new links to the history file."""
+    with open("history.txt", "a") as f:
+        for link in links:
+            f.write(link + "\n")
 
 def post_to_linkedin(post_text):
     url = "https://api.linkedin.com/v2/ugcPosts"
