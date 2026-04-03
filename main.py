@@ -5,6 +5,45 @@ import feedparser
 import requests
 from bs4 import BeautifulSoup
 import google.generativeai as genai
+import json
+
+def send_morning_syllabus():
+    """Reads the learning vault and sends today's checklist to Telegram."""
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
+    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
+    
+    # 1. Calculate the current Day of the challenge
+    # Change this to the exact date you started Day 1!
+    START_DATE = datetime(2026, 4, 3) 
+    day_number = str((datetime.now() - START_DATE).days + 1)
+    
+    # 2. Load the Learning Vault
+    try:
+        with open("learning_vault.json", "r") as file:
+            vault = json.load(file)
+    except FileNotFoundError:
+        print("❌ learning_vault.json not found!")
+        return
+
+    # 3. Get today's topics (or a default message if you run out of days)
+    topics = vault.get(day_number, ["Review past concepts and build a custom project!"])
+    
+    # 4. Format the message for Telegram
+    message = f"🤖 *Morning! Here is your Day {day_number} Syllabus:*\n\n"
+    for topic in topics:
+        message += f"☐ {topic}\n"
+    
+    message += "\n*Reply to this message as you complete them to add to tonight's log!*"
+
+    # 5. Send it to your phone
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": message,
+        "parse_mode": "Markdown"
+    }
+    requests.post(url, json=payload)
+    print(f"✅ Sent Day {day_number} syllabus to Telegram.")
 
 load_dotenv()
 
@@ -150,9 +189,13 @@ if __name__ == "__main__":
     current_hour = datetime.now().hour # UTC time
     print(f"🕒 Bot woke up! Current Server Hour (UTC): {current_hour}")
     
-    # 4 UTC = 9:30 AM to 10:30 AM IST
+# 4 UTC = 9:30 AM to 10:30 AM IST
     if current_hour == 4:
-        print("🌅 Scheduled Morning Mode: Fetching AI News...")
+        print("🌅 Scheduled Morning Mode: Sending Syllabus & Fetching News...")
+        
+        # ---> SEND THE CHECKLIST TO YOUR PHONE <---
+        send_morning_syllabus() 
+        
         news = get_top_news(limit=15)
         if news:
             post = generate_roundup_post(news)
