@@ -126,23 +126,32 @@ def post_to_linkedin(post_text):
 # ================== MAIN ==================
 if __name__ == "__main__":
     current_hour = datetime.now().hour # UTC time
+    print(f"🕒 Bot woke up! Current Server Hour (UTC): {current_hour}")
     
-    # 4:30 AM UTC = 10:00 AM IST
+    # 4 UTC = 9:30 AM to 10:30 AM IST
     if current_hour == 4:
-        print("🌅 Morning Mode: Fetching AI News...")
+        print("🌅 Scheduled Morning Mode: Fetching AI News...")
         news = get_top_news(limit=3)
         if news:
             post = generate_roundup_post(news)
             post_to_linkedin(post)
             save_history([item['link'] for item in news])
             
-    # 2:30 PM UTC = 8:00 PM IST
+    # 14 UTC = 7:30 PM to 8:30 PM IST
     elif current_hour == 14:
-        print("🌇 Evening Mode: Generating Journey Post...")
-        post = generate_journey_post() # Reads from daily_log.txt
+        print("🌇 Scheduled Evening Mode: Generating Journey Post...")
+        post = generate_journey_post()
         if post:
             post_to_linkedin(post)
-            # Optional: Clear the log after posting so it's ready for tomorrow
-            open("daily_log.txt", "w").close()
-        post_to_linkedin(post_text)
-        print("🎉 Done! Go check your LinkedIn profile.")
+            open("daily_log.txt", "w").close() 
+            
+    # MANUAL OVERRIDE (For when you click the button yourself)
+    else:
+        print("🚀 Manual Override Triggered: Forcing Morning News Post...")
+        news = get_top_news(limit=3)
+        if news:
+            post = generate_roundup_post(news)
+            post_to_linkedin(post)
+            save_history([item['link'] for item in news])
+        else:
+            print("💤 No new news found in RSS feeds.")
