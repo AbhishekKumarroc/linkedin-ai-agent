@@ -5,4 +5,34 @@ on:
     # Runs ONLY ONCE a day at 4:00 UTC (9:30 AM IST) for Morning News
     - cron: '0 4 * * *'
   workflow_dispatch: # Keeps your manual run button!
-  
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Allows the bot to push code changes back to GitHub
+
+    steps:
+      - uses: actions/checkout@v3
+        
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install requests google-generativeai
+        
+      - name: Run AI Agent (Main)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+        run: python main.py
+        
+      - name: Commit and Push History
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add history.txt daily_log.txt
+          git commit -m "Auto-update agent history and logs" || echo "No changes to commit"
+          git push
