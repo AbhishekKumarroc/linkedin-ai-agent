@@ -2,59 +2,67 @@ name: AI Automation Content Pipeline
 
 on:
   schedule:
-    - cron: '30 4 * * *'  # 10:00 AM IST (Morning News Roundup)
-    - cron: '30 14 * * *' # 08:00 PM IST (Evening Journey Post)
-    # Daily Telegram check at 2:00 PM IST
-    - cron: '0 8 * * *' 
+    # Runs ONLY ONCE a day at 4:00 UTC (9:30 AM IST) for Morning News
+    - cron: '0 4 * * *'
+  workflow_dispatch: # Keeps your manual run button!
   
-  workflow_dispatch:      # Allows manual trigger for testing
+#name: AI Automation Content Pipeline
 
-jobs:
-  run-pipeline:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # Essential for the bot to save files back to your repo
+#on:
+  #schedule:
+    #- cron: '30 4 * * *'  # 10:00 AM IST (Morning News Roundup)
+    #- cron: '30 14 * * *' # 08:00 PM IST (Evening Journey Post)
+    # Daily Telegram check at 2:00 PM IST
+    #- cron: '0 8 * * *' 
+  
+  #workflow_dispatch:      # Allows manual trigger for testing
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+#jobs:
+  #run-pipeline:
+    #runs-on: ubuntu-latest
+    #permissions:
+      #contents: write # Essential for the bot to save files back to your repo
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+    #steps:
+      #- name: Checkout repository
+        #uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install google-generativeai requests feedparser beautifulsoup4 python-dotenv urllib3
+      #- name: Set up Python
+        #uses: actions/setup-python@v5
+        #with:
+          #python-version: '3.11'
+
+      #- name: Install dependencies
+        #run: |
+          #python -m pip install --upgrade pip
+          #pip install google-generativeai requests feedparser beautifulsoup4 python-dotenv urllib3
 
       # STEP 1: Check Telegram and update daily_log.txt if you sent a message
-      - name: Check Telegram for Mobile Updates
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: python telegram_listener.py
+      #- name: Check Telegram for Mobile Updates
+        #env:
+         # TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+         # TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+         # GH_PAT: ${{ secrets.GH_PAT }}
+        #run: python telegram_listener.py
 
       # STEP 2: Run the main AI Agent (decides to post news or journey based on time)
-      - name: Run AI Agent
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
-          LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
-        run: python main.py
+      #- name: Run AI Agent
+        #env:
+         # GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        #  LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+         # LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
+       # run: python main.py
 
       # STEP 3: Sync all changes (history.txt and daily_log.txt) back to GitHub
-      - name: Sync Repository Changes
-        run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add history.txt daily_log.txt
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Automated sync: History & Logs [skip ci]"
-            git push
-            echo "✅ Repository updated successfully."
-          else
-            echo "💤 No changes detected in files."
-          fi
+    #  - name: Sync Repository Changes
+     #   run: |
+      #    git config --global user.name 'github-actions[bot]'
+       #   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+       #   git add history.txt daily_log.txt
+       #   if [ -n "$(git status --porcelain)" ]; then
+      #      git commit -m "Automated sync: History & Logs [skip ci]"
+        #    git push
+        #    echo "✅ Repository updated successfully."
+        #  else
+        #    echo "💤 No changes detected in files."
+       #   fi 
