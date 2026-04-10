@@ -1,17 +1,4 @@
 {
-  "1": [
-    "Set up GitHub Actions CI/CD",
-    "Build Telegram API Listener",
-    "Automate LinkedIn API Authentication"
-  ],
-  "2": [
-    "Upgrade Gemini System Prompt",
-    "Test JSON structured output",
-    "Add custom filtering logic to News"
-  ],
-  "3": [
-    "Deploy script to Cloud Run",
-    "Build a webhook listener",
-    "Test real-time execution"
-  ]
+  "1": ["Setup Python environment", "Learn GitHub Actions basics"],
+  "2": ["Explore Gemini API", "Test RSS feed parsing"]
 }
