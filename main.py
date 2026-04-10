@@ -4,46 +4,7 @@ from dotenv import load_dotenv
 import feedparser
 import requests
 from bs4 import BeautifulSoup
-import google.generativeai as genai
-import json
-
-def send_morning_syllabus():
-    """Reads the learning vault and sends today's checklist to Telegram."""
-    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID")
-    
-    # 1. Calculate the current Day of the challenge
-    # Change this to the exact date you started Day 1!
-    START_DATE = datetime(2026, 4, 3) 
-    day_number = str((datetime.now() - START_DATE).days + 1)
-    
-    # 2. Load the Learning Vault
-    try:
-        with open("learning_vault.json", "r") as file:
-            vault = json.load(file)
-    except FileNotFoundError:
-        print("❌ learning_vault.json not found!")
-        return
-
-    # 3. Get today's topics (or a default message if you run out of days)
-    topics = vault.get(day_number, ["Review past concepts and build a custom project!"])
-    
-    # 4. Format the message for Telegram
-    message = f"🤖 *Morning! Here is your Day {day_number} Syllabus:*\n\n"
-    for topic in topics:
-        message += f"☐ {topic}\n"
-    
-    message += "\n*Reply to this message as you complete them to add to tonight's log!*"
-
-    # 5. Send it to your phone
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-    payload = {
-        "chat_id": chat_id,
-        "text": message,
-        "parse_mode": "Markdown"
-    }
-    requests.post(url, json=payload)
-    print(f"✅ Sent Day {day_number} syllabus to Telegram.")
+from google import genai # NEW SDK IMPORT
 
 load_dotenv()
 
@@ -56,9 +17,8 @@ if not GEMINI_API_KEY or not LINKEDIN_ACCESS_TOKEN or not LINKEDIN_PERSON_URN:
     print("❌ ERROR: Missing API keys or LinkedIn tokens in .env file!")
     exit()
 
-genai.configure(api_key=GEMINI_API_KEY)
-# Using gemini-1.5-flash as it is the current supported free tier model
-model = genai.GenerativeModel('gemini-1.5-flash')
+# Initialize the new GenAI Client
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 RSS_FEEDS = [
     # --- The "Fastest" Breaking News ---
@@ -66,7 +26,7 @@ RSS_FEEDS = [
     "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
     "https://venturebeat.com/category/ai/feed/",
     
-    # --- Deep Tech & Open Source (Gemma/Llama news lives here) ---
+    # --- Deep Tech & Open Source ---
     "https://huggingface.co/blog/feed.xml",
     "https://machinelearningmastery.com/feed/",
     "https://towardsdatascience.com/feed",
@@ -76,7 +36,7 @@ RSS_FEEDS = [
     "https://www.unite.ai/feed/",
     "https://synthedia.substack.com/feed",
     
-    # --- Big Tech Official (Straight from the source) ---
+    # --- Big Tech Official ---
     "https://blog.google/technology/ai/rss/",
     "https://openai.com/news/rss.xml",
     "https://aws.amazon.com/blogs/machine-learning/feed/"
@@ -85,7 +45,7 @@ RSS_FEEDS = [
 # ============================================
 
 def get_top_news(limit=3):
-    history = load_history()  # 1. Load the bot's memory
+    history = load_history()
     all_news = []
     
     for url in RSS_FEEDS:
@@ -93,11 +53,10 @@ def get_top_news(limit=3):
             response = requests.get(url, timeout=10)
             feed = feedparser.parse(response.content)
             
-            for entry in feed.entries[:10]: # Look at top 5 just in case some are duplicates
+            for entry in feed.entries[:10]:
                 title = getattr(entry, 'title', '')
-                link = getattr(entry, 'link', '') # 2. Grab the link!
+                link = getattr(entry, 'link', '')
                 
-                # 3. THE MAGIC CHECK: If we already posted this link, skip it entirely!
                 if link in history:
                     continue
                 
@@ -106,7 +65,6 @@ def get_top_news(limit=3):
                 clean_summary = soup.get_text()
                 
                 if title and link:
-                    # 4. Add the 'link' to the dictionary so save_history can use it later
                     all_news.append({'title': title, 'summary': clean_summary, 'link': link})
         except Exception as e:
             continue
@@ -115,12 +73,10 @@ def get_top_news(limit=3):
     return list(unique_news)[:limit]
 
 def generate_roundup_post(news_list):
-    # 1. Format the news with Links so Gemini can use them
     news_text = ""
     for item in news_list:
         news_text += f"Title: {item['title']}\nSummary: {item['summary']}\nLink: {item['link']}\n\n"
 
-    # 2. The Strict "Top Creator" Prompt
     prompt = f"""You are a highly respected AI Automation Engineer on LinkedIn. Write a highly engaging, professional daily news roundup.
 Choose the TOP 3 most impactful stories from this list:
 {news_text}
@@ -138,54 +94,23 @@ STRICT FORMATTING RULES:
 
 Output ONLY the final LinkedIn post."""
     
-    response = model.generate_content(prompt)
+    # NEW SDK GENERATION CALL
+    response = client.models.generate_content(
+        model='gemini-2.5-flash', # Updated to the latest stable flash model
+        contents=prompt,
+    )
     return response.text.strip()
 
 def load_history():
-    """Loads previously posted links to avoid duplicates."""
     if not os.path.exists("history.txt"):
         return []
     with open("history.txt", "r") as f:
         return [line.strip() for line in f.readlines()]
 
 def save_history(links):
-    """Saves new links to the history file."""
     with open("history.txt", "a") as f:
         for link in links:
             f.write(link + "\n")
-
-def generate_journey_post():
-    """Reads the daily log and turns Telegram notes into a professional LinkedIn post."""
-    try:
-        # 1. Read your Telegram notes from the log file
-        with open("daily_log.txt", "r") as f:
-            user_notes = f.read().strip()
-        
-        if not user_notes:
-            print("💤 daily_log.txt is empty. Nothing to post tonight.")
-            return None
-
-        # 2. Ask Gemini to format these notes professionally
-        prompt = f"""
-        You are an AI Automation Engineer. Turn the following rough notes into a professional 
-        LinkedIn 'Day X/100' journey post. 
-        
-        Notes: {user_notes}
-
-        STRICT FORMATTING:
-        - Start with a punchy hook about the day's progress.
-        - Use the '↳ The News' and '↳ The Impact' structure for 2-3 main achievements.
-        - Keep the tone technical, professional, and bold.
-        - DO NOT use markdown bold (no **stars**).
-        - End with 5 relevant hashtags including #100DaysOfAI #DevOps.
-        """
-        
-        response = model.generate_content(prompt)
-        return response.text.strip()
-        
-    except Exception as e:
-        print(f"❌ Error generating journey post: {e}")
-        return None
 
 def post_to_linkedin(post_text):
     url = "https://api.linkedin.com/v2/ugcPosts"
@@ -219,15 +144,12 @@ def post_to_linkedin(post_text):
 
 # ================== MAIN ==================
 if __name__ == "__main__":
-    current_hour = datetime.now().hour # UTC time
+    current_hour = datetime.utcnow().hour # Ensure UTC time
     print(f"🕒 Bot woke up! Current Server Hour (UTC): {current_hour}")
     
-# 4 UTC = 9:30 AM to 10:30 AM IST
+    # 4 UTC = 9:30 AM IST
     if current_hour == 4:
-        print("🌅 Scheduled Morning Mode: Sending Syllabus & Fetching News...")
-        
-        # ---> SEND THE CHECKLIST TO YOUR PHONE <---
-        send_morning_syllabus() 
+        print("🌅 Scheduled Morning Mode: Fetching News...")
         
         news = get_top_news(limit=15)
         if news:
@@ -239,17 +161,6 @@ if __name__ == "__main__":
                 posted_links = [item['link'] for item in news[:3]]
             save_history(posted_links)
             
-    # 14 UTC = 8:00 PM IST
-    elif current_hour == 14:
-        print("🌇 Scheduled Evening Mode: Generating Journey Post...")
-        post = generate_journey_post()
-        if post:
-            post_to_linkedin(post)
-            # THIS IS THE ERASER: It only runs once a day at 8 PM
-            with open("daily_log.txt", "w") as f:
-                f.write("") 
-            print("🧹 daily_log.txt cleared for tomorrow.")
-            
-    # ALL OTHER HOURS (The Hourly Telegram Check)
+    # ALL OTHER HOURS
     else:
-        print("💤 Hourly check complete. Telegram updated. No LinkedIn post scheduled right now.")
+        print("💤 Not scheduled time. Skipping LinkedIn post.")
