@@ -1,10 +1,9 @@
 import os
-from datetime import datetime
 from dotenv import load_dotenv
 import feedparser
 import requests
 from bs4 import BeautifulSoup
-from google import genai # NEW SDK IMPORT
+from google import genai
 
 load_dotenv()
 
@@ -17,26 +16,18 @@ if not GEMINI_API_KEY or not LINKEDIN_ACCESS_TOKEN or not LINKEDIN_PERSON_URN:
     print("❌ ERROR: Missing API keys or LinkedIn tokens in .env file!")
     exit()
 
-# Initialize the new GenAI Client
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 RSS_FEEDS = [
-    # --- The "Fastest" Breaking News ---
     "https://www.theverge.com/ai-artificial-intelligence/rss/index.xml",
     "https://www.technologyreview.com/topic/artificial-intelligence/feed/",
     "https://venturebeat.com/category/ai/feed/",
-    
-    # --- Deep Tech & Open Source ---
     "https://huggingface.co/blog/feed.xml",
     "https://machinelearningmastery.com/feed/",
     "https://towardsdatascience.com/feed",
-    
-    # --- AI Industry Specific ---
     "https://www.artificialintelligence-news.com/feed/",
     "https://www.unite.ai/feed/",
     "https://synthedia.substack.com/feed",
-    
-    # --- Big Tech Official ---
     "https://blog.google/technology/ai/rss/",
     "https://openai.com/news/rss.xml",
     "https://aws.amazon.com/blogs/machine-learning/feed/"
@@ -94,9 +85,8 @@ STRICT FORMATTING RULES:
 
 Output ONLY the final LinkedIn post."""
     
-    # NEW SDK GENERATION CALL
     response = client.models.generate_content(
-        model='gemini-2.5-flash', # Updated to the latest stable flash model
+        model='gemini-2.5-flash',
         contents=prompt,
     )
     return response.text.strip()
@@ -144,23 +134,17 @@ def post_to_linkedin(post_text):
 
 # ================== MAIN ==================
 if __name__ == "__main__":
-    current_hour = datetime.utcnow().hour # Ensure UTC time
-    print(f"🕒 Bot woke up! Current Server Hour (UTC): {current_hour}")
+    print("🚀 Bot started! Fetching news and generating post...")
     
-    # 4 UTC = 9:30 AM IST
-    if current_hour == 4:
-        print("🌅 Scheduled Morning Mode: Fetching News...")
+    news = get_top_news(limit=15)
+    if news:
+        post = generate_roundup_post(news)
+        post_to_linkedin(post)
         
-        news = get_top_news(limit=15)
-        if news:
-            post = generate_roundup_post(news)
-            post_to_linkedin(post)
-            # Smart Saving
-            posted_links = [item['link'] for item in news if item['title'] in post]
-            if not posted_links:
-                posted_links = [item['link'] for item in news[:3]]
-            save_history(posted_links)
-            
-    # ALL OTHER HOURS
+        # Smart Saving to avoid duplicates tomorrow
+        posted_links = [item['link'] for item in news if item['title'] in post]
+        if not posted_links:
+            posted_links = [item['link'] for item in news[:3]]
+        save_history(posted_links)
     else:
-        print("💤 Not scheduled time. Skipping LinkedIn post.")
+        print("💤 No new articles found to post.")
