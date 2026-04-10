@@ -63,6 +63,8 @@ def get_top_news(limit=3):
     unique_news = {item['title']: item for item in all_news}.values()
     return list(unique_news)[:limit]
 
+import time # Add this to the very top of your file with the other imports!
+
 def generate_roundup_post(news_list):
     news_text = ""
     for item in news_list:
@@ -85,11 +87,25 @@ STRICT FORMATTING RULES:
 
 Output ONLY the final LinkedIn post."""
     
-    response = client.models.generate_content(
-        model='gemini-2.5-flash',
-        contents=prompt,
-    )
-    return response.text.strip()
+    # --- NEW RETRY LOGIC ---
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            response = client.models.generate_content(
+                model='gemini-2.5-flash',
+                contents=prompt,
+            )
+            return response.text.strip()
+        except Exception as e:
+            if "503" in str(e) or "UNAVAILABLE" in str(e) or "429" in str(e):
+                print(f"⚠️ Gemini API is busy (Attempt {attempt + 1}/{max_retries}). Waiting 30 seconds...")
+                time.sleep(30) # Wait 30 seconds before trying again
+            else:
+                print(f"❌ Unhandled AI generation error: {e}")
+                return None
+                
+    print("❌ Failed to generate content after multiple retries. Skipping today's post.")
+    return None
 
 def load_history():
     if not os.path.exists("history.txt"):
