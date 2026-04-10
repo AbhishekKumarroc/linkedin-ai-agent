@@ -1,10 +1,9 @@
 name: AI Automation Content Pipeline
 
 on:
+  workflow_dispatch: # 👈 This adds the "Run Workflow" button for manual runs!
   schedule:
-    # 4:00 AM UTC is 9:30 AM IST
-    - cron: '0 4 * * *'
-  workflow_dispatch: # Allows manual trigger
+    - cron: '30 4 * * *' # 👈 4:30 AM UTC is exactly 10:00 AM IST
 
 jobs:
   run-pipeline:
