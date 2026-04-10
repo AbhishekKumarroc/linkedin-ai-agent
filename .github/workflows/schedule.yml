@@ -2,15 +2,16 @@ name: AI Automation Content Pipeline
 
 on:
   schedule:
-    # Runs ONLY ONCE a day at 4:00 UTC (9:30 AM IST) for Morning News
-    - cron: '0 4 * * *'
-  workflow_dispatch: # Keeps your manual run button!
+    # Runs at a random minute between 4:00 and 5:00 UTC (9:30 - 10:30 AM IST)
+    # Using '30 4 * * *' to start exactly at 10:00 AM IST
+    - cron: '30 4 * * *'
+  workflow_dispatch: # Allows manual triggering whenever you want
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Allows the bot to push code changes back to GitHub
+      contents: write
 
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +22,10 @@ jobs:
           python-version: '3.10'
           
       - name: Install dependencies
-        run: pip install requests google-generativeai
+        # Added python-dotenv here to fix your ModuleNotFoundError
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests google-generativeai python-dotenv
         
       - name: Run AI Agent (Main)
         env:
