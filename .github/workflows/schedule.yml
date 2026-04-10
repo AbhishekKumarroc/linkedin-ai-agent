@@ -2,10 +2,9 @@ name: AI Automation Content Pipeline
 
 on:
   schedule:
-    # Runs at a random minute between 4:00 and 5:00 UTC (9:30 - 10:30 AM IST)
-    # Using '30 4 * * *' to start exactly at 10:00 AM IST
-    - cron: '30 4 * * *'
-  workflow_dispatch: # Allows manual triggering whenever you want
+    # 4:15 AM UTC is 9:45 AM IST (Within your 9:30-10:30 window)
+    - cron: '15 4 * * *'
+  workflow_dispatch: # Manual trigger button
 
 jobs:
   run-pipeline:
@@ -22,10 +21,10 @@ jobs:
           python-version: '3.10'
           
       - name: Install dependencies
-        # Added python-dotenv here to fix your ModuleNotFoundError
+        # Added feedparser and python-dotenv to the list
         run: |
           python -m pip install --upgrade pip
-          pip install requests google-generativeai python-dotenv
+          pip install requests google-generativeai python-dotenv feedparser
         
       - name: Run AI Agent (Main)
         env:
