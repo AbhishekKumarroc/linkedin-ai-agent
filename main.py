@@ -148,19 +148,30 @@ def post_to_linkedin(post_text):
         print(f"❌ Failed to post. Status code: {response.status_code}")
         print(response.text)
 
-# ================== MAIN ==================
+# ================== MAIN (UPDATED) ==================
 if __name__ == "__main__":
     print("🚀 Bot started! Fetching news and generating post...")
     
+    # We fetch a larger pool to ensure we have enough fresh content after filtering history
     news = get_top_news(limit=15)
+    
     if news:
-        post = generate_roundup_post(news)
-        post_to_linkedin(post)
+        # 1. Select the top 3 items that will actually be used
+        top_3_news = news[:3]
         
-        # Smart Saving to avoid duplicates tomorrow
-        posted_links = [item['link'] for item in news if item['title'] in post]
-        if not posted_links:
-            posted_links = [item['link'] for item in news[:3]]
-        save_history(posted_links)
+        # 2. Generate the post using only these 3
+        post = generate_roundup_post(top_3_news)
+        
+        if post:
+            # 3. Post to LinkedIn
+            post_to_linkedin(post)
+            
+            # 4. Immediately save these 3 links to history.txt 
+            # This ensures they are NEVER picked up again.
+            posted_links = [item['link'] for item in top_3_news]
+            save_history(posted_links)
+            print(f"✅ History updated with {len(posted_links)} new links.")
+        else:
+            print("❌ Post generation failed. History not updated.")
     else:
-        print("💤 No new articles found to post.")
+        print("💤 No new articles found to post. (Everything in the feed is already in history.txt)")
