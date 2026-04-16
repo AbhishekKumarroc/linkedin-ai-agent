@@ -1,44 +1,39 @@
 name: AI Automation Content Pipeline
 
 on:
-  workflow_dispatch: # 👈 This adds the "Run Workflow" button for manual runs!
+  workflow_dispatch: # Allows manual trigger
   schedule:
-    - cron: '30 4 * * *' # 👈 4:30 AM UTC is exactly 10:00 AM IST
+    - cron: '0 0 * * *' # 00:00 UTC is exactly 05:30 AM IST
 
 jobs:
   run-pipeline:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v3
-        
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-          
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests feedparser beautifulsoup4 python-dotenv
-          # REMOVE google-generativeai and ADD google-genai
-          pip install google-genai
-        
-      - name: Run AI Agent (Main)
+          pip install requests feedparser beautifulsoup4 python-dotenv google-genai
+
+      - name: Run AI Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python main.py
-        
+
       - name: Commit and Push History
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add history.txt daily_log.txt
-          git commit -m "Auto-update agent history and logs" || echo "No changes to commit"
+          git commit -m "Update history to prevent duplicate posts" || echo "No changes"
           git push
