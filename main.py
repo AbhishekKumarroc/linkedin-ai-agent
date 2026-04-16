@@ -148,30 +148,30 @@ def post_to_linkedin(post_text):
         print(f"❌ Failed to post. Status code: {response.status_code}")
         print(response.text)
 
-# ================== MAIN (UPDATED) ==================
 if __name__ == "__main__":
-    print("🚀 Bot started! Fetching news and generating post...")
+    print("🚀 Bot started! Fetching fresh AI news...")
     
-    # We fetch a larger pool to ensure we have enough fresh content after filtering history
-    news = get_top_news(limit=15)
+    # Fetch a pool of news
+    news_pool = get_top_news(limit=15)
     
-    if news:
-        # 1. Select the top 3 items that will actually be used
-        top_3_news = news[:3]
+    if news_pool:
+        # Take the top 3 items that survived the history filter
+        top_3_news = news_pool[:3]
         
-        # 2. Generate the post using only these 3
-        post = generate_roundup_post(top_3_news)
+        # Generate the post using only these 3 specific items
+        post_content = generate_roundup_post(top_3_news)
         
-        if post:
-            # 3. Post to LinkedIn
-            post_to_linkedin(post)
+        if post_content:
+            # Execute LinkedIn post
+            post_to_linkedin(post_content)
             
-            # 4. Immediately save these 3 links to history.txt 
-            # This ensures they are NEVER picked up again.
-            posted_links = [item['link'] for item in top_3_news]
-            save_history(posted_links)
-            print(f"✅ History updated with {len(posted_links)} new links.")
+            # CRITICAL: Save these exact links to history.txt immediately
+            # This prevents the "Groundhog Day" loop
+            links_to_save = [item['link'] for item in top_3_news]
+            save_history(links_to_save)
+            
+            print(f"✅ Success! Post published and {len(links_to_save)} links moved to history.")
         else:
-            print("❌ Post generation failed. History not updated.")
+            print("❌ Failed to generate post content.")
     else:
-        print("💤 No new articles found to post. (Everything in the feed is already in history.txt)")
+        print("💤 No new news found. All current articles have already been posted.")
