@@ -17,3 +17,6 @@ https://venturebeat.com/infrastructure/railway-secures-usd100-million-to-challen
 https://venturebeat.com/infrastructure/claude-code-costs-up-to-usd200-a-month-goose-does-the-same-thing-for-free
 https://venturebeat.com/technology/listen-labs-raises-usd69m-after-viral-billboard-hiring-stunt-to-scale-ai
 https://venturebeat.com/technology/salesforce-rolls-out-new-slackbot-ai-agent-as-it-battles-microsoft-and
+https://www.technologyreview.com/2026/04/16/1135216/making-ai-operational-in-constrained-public-sector-environments/
+https://www.technologyreview.com/2026/04/16/1135554/treating-enterprise-ai-as-an-operating-layer/
+https://www.technologyreview.com/2026/04/16/1136029/humans-in-the-loop-ai-war-illusion/
