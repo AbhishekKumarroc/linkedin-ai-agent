@@ -26,3 +26,6 @@ https://venturebeat.com/technology/nous-researchs-nouscoder-14b-is-an-open-sourc
 https://venturebeat.com/technology/the-creator-of-claude-code-just-revealed-his-workflow-and-developers-are
 https://huggingface.co/blog/nvidia/nemotron-ocr-v2
 https://huggingface.co/blog/ecom-rlve
+https://huggingface.co/blog/transformers-to-mlx
+https://huggingface.co/blog/train-multimodal-sentence-transformers
+https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis
