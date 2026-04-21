@@ -29,3 +29,6 @@ https://huggingface.co/blog/ecom-rlve
 https://huggingface.co/blog/transformers-to-mlx
 https://huggingface.co/blog/train-multimodal-sentence-transformers
 https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis
+https://www.technologyreview.com/2026/04/20/1136149/chinese-tech-workers-ai-colleagues/
+https://huggingface.co/blog/nvidia/build-korean-agents-with-nemotron-personas
+https://huggingface.co/blog/Hcompany/holotab
