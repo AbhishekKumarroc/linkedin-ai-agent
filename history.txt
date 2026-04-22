@@ -32,3 +32,6 @@ https://huggingface.co/blog/ibm-research/vakra-benchmark-analysis
 https://www.technologyreview.com/2026/04/20/1136149/chinese-tech-workers-ai-colleagues/
 https://huggingface.co/blog/nvidia/build-korean-agents-with-nemotron-personas
 https://huggingface.co/blog/Hcompany/holotab
+https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/
+https://www.technologyreview.com/2026/04/21/1135645/llm-large-language-models-ai/
+https://www.technologyreview.com/2026/04/21/1135647/supercharged-scams-ai-artificial-intelligence/
