@@ -35,3 +35,6 @@ https://huggingface.co/blog/Hcompany/holotab
 https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/
 https://www.technologyreview.com/2026/04/21/1135645/llm-large-language-models-ai/
 https://www.technologyreview.com/2026/04/21/1135647/supercharged-scams-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/22/1135295/ai-needs-a-strong-data-fabric-to-deliver-business-value/
+https://www.technologyreview.com/2026/04/21/1135650/world-models-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/21/1135652/weaponized-deepfakes-ai-artificial-intelligence/
