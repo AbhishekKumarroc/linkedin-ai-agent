@@ -38,3 +38,6 @@ https://www.technologyreview.com/2026/04/21/1135647/supercharged-scams-ai-artifi
 https://www.technologyreview.com/2026/04/22/1135295/ai-needs-a-strong-data-fabric-to-deliver-business-value/
 https://www.technologyreview.com/2026/04/21/1135650/world-models-ai-artificial-intelligence/
 https://www.technologyreview.com/2026/04/21/1135652/weaponized-deepfakes-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/21/1135654/agent-orchestration-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/21/1135656/humanoid-data-robot-training-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/21/1135658/china-open-source-models-ai-artificial-intelligence/
