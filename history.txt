@@ -41,3 +41,6 @@ https://www.technologyreview.com/2026/04/21/1135652/weaponized-deepfakes-ai-arti
 https://www.technologyreview.com/2026/04/21/1135654/agent-orchestration-ai-artificial-intelligence/
 https://www.technologyreview.com/2026/04/21/1135656/humanoid-data-robot-training-ai-artificial-intelligence/
 https://www.technologyreview.com/2026/04/21/1135658/china-open-source-models-ai-artificial-intelligence/
+https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/
+https://huggingface.co/blog/deepseekv4
+https://huggingface.co/blog/transformersjs-chrome-extension
