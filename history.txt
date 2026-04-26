@@ -44,3 +44,6 @@ https://www.technologyreview.com/2026/04/21/1135658/china-open-source-models-ai-
 https://www.technologyreview.com/2026/04/24/1136422/why-deepseeks-v4-matters/
 https://huggingface.co/blog/deepseekv4
 https://huggingface.co/blog/transformersjs-chrome-extension
+https://huggingface.co/blog/nvidia/gemma4
+https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard
+https://huggingface.co/blog/cybersecurity-openness
