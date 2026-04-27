@@ -47,3 +47,6 @@ https://huggingface.co/blog/transformersjs-chrome-extension
 https://huggingface.co/blog/nvidia/gemma4
 https://huggingface.co/blog/tiiuae/qimma-arabic-leaderboard
 https://huggingface.co/blog/cybersecurity-openness
+https://machinelearningmastery.com/building-ai-agents-with-local-small-language-models/
+https://machinelearningmastery.com/train-serve-and-deploy-a-scikit-learn-model-with-fastapi/
+https://machinelearningmastery.com/ai-agent-memory-explained-in-3-levels-of-difficulty/
