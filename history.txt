@@ -56,3 +56,6 @@ https://www.technologyreview.com/2026/04/27/1136322/rebuilding-the-data-stack-fo
 https://huggingface.co/blog/nvidia/nemotron-3-nano-omni-multimodal-intelligence
 https://huggingface.co/blog/openai-privacy-filter-web-apps
 https://machinelearningmastery.com/effective-context-engineering-for-ai-agents-a-developers-guide/
+https://huggingface.co/blog/evaleval/eval-costs-bottleneck
+https://huggingface.co/blog/ibm-granite/granite-4-1
+https://huggingface.co/blog/inference-providers-deepinfra
