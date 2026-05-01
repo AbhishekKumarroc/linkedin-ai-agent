@@ -59,3 +59,6 @@ https://machinelearningmastery.com/effective-context-engineering-for-ai-agents-a
 https://huggingface.co/blog/evaleval/eval-costs-bottleneck
 https://huggingface.co/blog/ibm-granite/granite-4-1
 https://huggingface.co/blog/inference-providers-deepinfra
+https://www.technologyreview.com/2026/04/30/1136721/this-startups-new-mechanistic-interpretability-tool-lets-you-debug-llms/
+https://machinelearningmastery.com/effective-kv-compression-with-turboquant/
+https://machinelearningmastery.com/building-ai-agents-in-python-with-pydantic-ai/
