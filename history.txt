@@ -62,3 +62,6 @@ https://huggingface.co/blog/inference-providers-deepinfra
 https://www.technologyreview.com/2026/04/30/1136721/this-startups-new-mechanistic-interpretability-tool-lets-you-debug-llms/
 https://machinelearningmastery.com/effective-kv-compression-with-turboquant/
 https://machinelearningmastery.com/building-ai-agents-in-python-with-pydantic-ai/
+https://www.technologyreview.com/2026/05/01/1136800/musk-v-altman-week-1-musk-says-he-was-duped-warns-ai-could-kill-us-all-and-admits-that-xai-distills-openais-models/
+https://www.technologyreview.com/2026/05/01/1136779/cyber-insecurity-in-the-ai-era/
+https://www.technologyreview.com/2026/05/01/1136772/operationalizing-ai-for-scale-and-sovereignty/
