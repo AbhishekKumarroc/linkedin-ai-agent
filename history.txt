@@ -68,3 +68,6 @@ https://www.technologyreview.com/2026/05/01/1136772/operationalizing-ai-for-scal
 https://www.technologyreview.com/2026/05/01/1136739/a-new-t-mobile-network-for-christians-aims-to-block-porn-and-gender-related-content/
 https://machinelearningmastery.com/text-summarization-with-scikit-llm/
 https://machinelearningmastery.com/getting-started-with-zero-shot-text-classification/
+https://machinelearningmastery.com/the-complete-guide-to-inference-caching-in-llms/
+https://machinelearningmastery.com/python-decorators-for-production-machine-learning-engineering/
+https://www.artificialintelligence-news.com/news/sap-how-enterprise-ai-governance-secures-profit-margins/
