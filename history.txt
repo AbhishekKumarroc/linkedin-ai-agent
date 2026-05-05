@@ -71,3 +71,6 @@ https://machinelearningmastery.com/getting-started-with-zero-shot-text-classific
 https://machinelearningmastery.com/the-complete-guide-to-inference-caching-in-llms/
 https://machinelearningmastery.com/python-decorators-for-production-machine-learning-engineering/
 https://www.artificialintelligence-news.com/news/sap-how-enterprise-ai-governance-secures-profit-margins/
+https://www.technologyreview.com/2026/05/04/1136826/week-one-of-the-musk-v-altman-trial-what-it-was-like-in-the-room/
+https://machinelearningmastery.com/agentic-rag-explained-in-3-levels-of-difficulty/
+https://www.artificialintelligence-news.com/news/physical-ai-governance-autonomous-systems/
