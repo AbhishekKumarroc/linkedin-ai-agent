@@ -74,3 +74,6 @@ https://www.artificialintelligence-news.com/news/sap-how-enterprise-ai-governanc
 https://www.technologyreview.com/2026/05/04/1136826/week-one-of-the-musk-v-altman-trial-what-it-was-like-in-the-room/
 https://machinelearningmastery.com/agentic-rag-explained-in-3-levels-of-difficulty/
 https://www.artificialintelligence-news.com/news/physical-ai-governance-autonomous-systems/
+https://www.technologyreview.com/2026/05/05/1136843/ai-democracy-blueprint/
+https://machinelearningmastery.com/implementing-statistical-guardrails-for-non-deterministic-agents/
+https://www.artificialintelligence-news.com/news/agentic-ai-governance-enterprise-readiness-google/
