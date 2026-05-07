@@ -77,3 +77,6 @@ https://www.artificialintelligence-news.com/news/physical-ai-governance-autonomo
 https://www.technologyreview.com/2026/05/05/1136843/ai-democracy-blueprint/
 https://machinelearningmastery.com/implementing-statistical-guardrails-for-non-deterministic-agents/
 https://www.artificialintelligence-news.com/news/agentic-ai-governance-enterprise-readiness-google/
+https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections
+https://huggingface.co/blog/open-asr-leaderboard-private-data
+https://www.artificialintelligence-news.com/news/hps-ai-and-data-offerings-for-the-enterprise/
