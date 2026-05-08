@@ -80,3 +80,6 @@ https://www.artificialintelligence-news.com/news/agentic-ai-governance-enterpris
 https://huggingface.co/blog/ServiceNow-AI/correctness-before-corrections
 https://huggingface.co/blog/open-asr-leaderboard-private-data
 https://www.artificialintelligence-news.com/news/hps-ai-and-data-offerings-for-the-enterprise/
+https://machinelearningmastery.com/the-roadmap-to-mastering-tool-calling-in-ai-agents/
+https://www.artificialintelligence-news.com/news/ai-in-the-nhs-helping-ease-doctors-burdens/
+https://www.artificialintelligence-news.com/news/us-government-increases-ai-in-defence-suppliers-roster-and-rethinks-anthropics-role/
