@@ -83,3 +83,6 @@ https://www.artificialintelligence-news.com/news/hps-ai-and-data-offerings-for-t
 https://machinelearningmastery.com/the-roadmap-to-mastering-tool-calling-in-ai-agents/
 https://www.artificialintelligence-news.com/news/ai-in-the-nhs-helping-ease-doctors-burdens/
 https://www.artificialintelligence-news.com/news/us-government-increases-ai-in-defence-suppliers-roster-and-rethinks-anthropics-role/
+https://www.technologyreview.com/2026/05/08/1137008/musk-v-altman-week-2-openai-fires-back-and-shivon-zilis-reveals-that-musk-tried-to-poach-sam-altman/
+https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/cybersecqwen-4b
+https://huggingface.co/blog/allenai/emo
