@@ -86,3 +86,6 @@ https://www.artificialintelligence-news.com/news/us-government-increases-ai-in-d
 https://www.technologyreview.com/2026/05/08/1137008/musk-v-altman-week-2-openai-fires-back-and-shivon-zilis-reveals-that-musk-tried-to-poach-sam-altman/
 https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/cybersecqwen-4b
 https://huggingface.co/blog/allenai/emo
+https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/oncoagent-official-paper
+https://machinelearningmastery.com/implementing-permission-gated-tool-calling-in-python-agents/
+https://www.artificialintelligence-news.com/news/ringcentral-ai-adds-shopify-calendly-and-whatsapp-to-ai-receptionist/
