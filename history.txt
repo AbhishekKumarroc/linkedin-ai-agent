@@ -89,3 +89,6 @@ https://huggingface.co/blog/allenai/emo
 https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/oncoagent-official-paper
 https://machinelearningmastery.com/implementing-permission-gated-tool-calling-in-python-agents/
 https://www.artificialintelligence-news.com/news/ringcentral-ai-adds-shopify-calendly-and-whatsapp-to-ai-receptionist/
+https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/machinacheck
+https://www.artificialintelligence-news.com/news/google-remy-ai-agent-gemini-user-control/
+https://www.artificialintelligence-news.com/news/per-token-ai-charging-comes-to-github-copilot/
