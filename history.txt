@@ -92,3 +92,6 @@ https://www.artificialintelligence-news.com/news/ringcentral-ai-adds-shopify-cal
 https://huggingface.co/blog/lablab-ai-amd-developer-hackathon/machinacheck
 https://www.artificialintelligence-news.com/news/google-remy-ai-agent-gemini-user-control/
 https://www.artificialintelligence-news.com/news/per-token-ai-charging-comes-to-github-copilot/
+https://www.technologyreview.com/2026/05/11/1137090/three-things-in-ai-to-watch-according-to-a-nobel-winning-economist/
+https://www.technologyreview.com/2026/05/11/1136967/fostering-breakthrough-ai-innovation-through-customer-back-engineering/
+https://www.technologyreview.com/2026/05/11/1136786/implementing-advanced-ai-technologies-in-finance/
