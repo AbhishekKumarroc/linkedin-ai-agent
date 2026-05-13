@@ -95,3 +95,6 @@ https://www.artificialintelligence-news.com/news/per-token-ai-charging-comes-to-
 https://www.technologyreview.com/2026/05/11/1137090/three-things-in-ai-to-watch-according-to-a-nobel-winning-economist/
 https://www.technologyreview.com/2026/05/11/1136967/fostering-breakthrough-ai-innovation-through-customer-back-engineering/
 https://www.technologyreview.com/2026/05/11/1136786/implementing-advanced-ai-technologies-in-finance/
+https://huggingface.co/blog/amazon/foundation-model-building-blocks
+https://machinelearningmastery.com/llm-observability-tools-for-reliable-ai-applications/
+https://machinelearningmastery.com/implementing-prompt-compression-to-reduce-agentic-loop-costs/
