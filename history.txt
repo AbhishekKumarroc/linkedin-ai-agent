@@ -98,3 +98,6 @@ https://www.technologyreview.com/2026/05/11/1136786/implementing-advanced-ai-tec
 https://huggingface.co/blog/amazon/foundation-model-building-blocks
 https://machinelearningmastery.com/llm-observability-tools-for-reliable-ai-applications/
 https://machinelearningmastery.com/implementing-prompt-compression-to-reduce-agentic-loop-costs/
+https://www.technologyreview.com/2026/05/13/1137203/ai-chatbots-are-giving-out-peoples-real-phone-numbers/
+https://machinelearningmastery.com/choosing-the-right-agentic-design-pattern-a-decision-tree-approach/
+https://www.artificialintelligence-news.com/news/physical-ai-conference-comes-to-san-jose-as-robotics-autonomous-ai-go-mainstream/
