@@ -110,3 +110,6 @@ https://huggingface.co/blog/ibm-granite/granite-embedding-multilingual-r2
 https://huggingface.co/blog/continuous_async
 https://www.artificialintelligence-news.com/news/deloitte-scale-autonomous-intelligence-for-real-growth/
 https://www.artificialintelligence-news.com/news/physical-ai-humanoid-robots-factories/
+https://www.artificialintelligence-news.com/news/top-real-estate-app-development-companies-in-the-us-abilities-and-costs/
+https://www.artificialintelligence-news.com/news/jbs-dev-on-imperfect-data-and-the-ai-last-mile-from-model-capability-to-cost-sustainability/
+https://www.artificialintelligence-news.com/news/malware-on-hugging-face-malicious-software-masquerading-as-openai-release/
