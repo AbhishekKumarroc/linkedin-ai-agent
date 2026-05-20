@@ -116,3 +116,6 @@ https://www.artificialintelligence-news.com/news/malware-on-hugging-face-malicio
 https://www.technologyreview.com/2026/05/18/1137488/elon-musk-suit-openai-verdict/
 https://www.technologyreview.com/2026/05/18/1137439/what-to-expect-from-google-this-week/
 https://www.technologyreview.com/2026/05/18/1137412/inside-anduril-and-metas-quest-to-make-smart-glasses-for-warfare/
+https://venturebeat.com/technology/google-just-redesigned-the-search-box-for-the-first-time-in-25-years-heres-why-it-matters-more-than-you-think
+https://huggingface.co/blog/allenai/olmoearth-v1-1
+https://huggingface.co/blog/ettin-reranker
