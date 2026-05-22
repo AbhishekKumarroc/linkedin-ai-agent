@@ -122,3 +122,6 @@ https://huggingface.co/blog/ettin-reranker
 https://www.technologyreview.com/2026/05/19/1137454/roundtables-inside-the-musk-v-altman-trial/
 https://huggingface.co/blog/nvidia/cosmos-fine-tuning-for-robot-video-generation
 https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers
+https://www.technologyreview.com/2026/05/21/1137756/roundtables-can-ai-learn-to-understand-the-world/
+https://www.technologyreview.com/2026/05/21/1137613/scaling-creativity-in-the-age-of-ai/
+https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/
