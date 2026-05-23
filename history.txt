@@ -125,3 +125,6 @@ https://huggingface.co/blog/PaddlePaddle/paddleocr-transformers
 https://www.technologyreview.com/2026/05/21/1137756/roundtables-can-ai-learn-to-understand-the-world/
 https://www.technologyreview.com/2026/05/21/1137613/scaling-creativity-in-the-age-of-ai/
 https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-showed-off-codings-future-whether-you-like-it-or-not/
+https://www.technologyreview.com/2026/05/22/1137813/google-i-o-showed-how-the-path-for-ai-science-is-shifting/
+https://huggingface.co/blog/nvidia/nemotron-labs-diffusion
+https://huggingface.co/blog/Dharma-AI/specialization-beats-scale
