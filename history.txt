@@ -128,3 +128,6 @@ https://www.technologyreview.com/2026/05/21/1137735/anthropics-code-with-claude-
 https://www.technologyreview.com/2026/05/22/1137813/google-i-o-showed-how-the-path-for-ai-science-is-shifting/
 https://huggingface.co/blog/nvidia/nemotron-labs-diffusion
 https://huggingface.co/blog/Dharma-AI/specialization-beats-scale
+https://huggingface.co/blog/ibm-research/open-agent-leaderboard
+https://machinelearningmastery.com/building-context-aware-search-in-python-with-llm-embeddings-metadata/
+https://machinelearningmastery.com/how-to-build-a-multi-agent-research-assistant-in-python/
