@@ -134,3 +134,6 @@ https://machinelearningmastery.com/how-to-build-a-multi-agent-research-assistant
 https://machinelearningmastery.com/agentic-programming-a-roadmap/
 https://machinelearningmastery.com/prompt-engineering-for-agentic-ai/
 https://machinelearningmastery.com/building-vector-similarity-search-in-postgresql-with-pgvector/
+https://huggingface.co/blog/agent-glossary
+https://machinelearningmastery.com/implementing-hybrid-semantic-lexical-search-in-rag/
+https://towardsdatascience.com/i-built-my-first-etl-pipeline-as-a-complete-beginner-heres-exactly-how/
