@@ -137,3 +137,6 @@ https://machinelearningmastery.com/building-vector-similarity-search-in-postgres
 https://huggingface.co/blog/agent-glossary
 https://machinelearningmastery.com/implementing-hybrid-semantic-lexical-search-in-rag/
 https://towardsdatascience.com/i-built-my-first-etl-pipeline-as-a-complete-beginner-heres-exactly-how/
+https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/
+https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/
+https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/
