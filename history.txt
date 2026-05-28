@@ -140,3 +140,6 @@ https://towardsdatascience.com/i-built-my-first-etl-pipeline-as-a-complete-begin
 https://www.technologyreview.com/2026/05/26/1137584/rethinking-organizational-design-in-the-age-of-agentic-ai/
 https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/
 https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-looming-crisis-in-entry-level-work/
+https://huggingface.co/blog/ibm-research/itbench-aa
+https://huggingface.co/blog/local-reachy-mini-conversation
+https://huggingface.co/blog/delta-weight-sync
