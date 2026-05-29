@@ -143,3 +143,6 @@ https://www.technologyreview.com/2026/05/26/1137865/its-time-to-address-the-loom
 https://huggingface.co/blog/ibm-research/itbench-aa
 https://huggingface.co/blog/local-reachy-mini-conversation
 https://huggingface.co/blog/delta-weight-sync
+https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/
+https://machinelearningmastery.com/building-a-context-pruning-pipeline-for-long-running-agents/
+https://machinelearningmastery.com/the-statistics-of-token-selection-logits-temperature-and-top-p-walkthrough/
