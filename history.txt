@@ -146,3 +146,6 @@ https://huggingface.co/blog/delta-weight-sync
 https://www.technologyreview.com/2026/05/28/1138053/the-ai-hype-index-ai-gets-booed-in-graduation-season/
 https://machinelearningmastery.com/building-a-context-pruning-pipeline-for-long-running-agents/
 https://machinelearningmastery.com/the-statistics-of-token-selection-logits-temperature-and-top-p-walkthrough/
+https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/
+https://huggingface.co/blog/torch-profiler
+https://machinelearningmastery.com/building-a-multi-tool-gemma-4-agent-with-error-recovery/
