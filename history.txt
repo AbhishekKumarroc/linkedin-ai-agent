@@ -149,3 +149,6 @@ https://machinelearningmastery.com/the-statistics-of-token-selection-logits-temp
 https://www.technologyreview.com/2026/05/29/1138107/how-the-popes-magnifica-humanitas-offers-a-template-for-individuals-to-meet-the-ai-moment/
 https://huggingface.co/blog/torch-profiler
 https://machinelearningmastery.com/building-a-multi-tool-gemma-4-agent-with-error-recovery/
+https://towardsdatascience.com/meta-cognitive-regulation-might-be-the-most-important-ai-skill-nobody-is-talking-about/
+https://towardsdatascience.com/embeddings-arent-magic-the-predictable-failure-modes-of-rag-retrieval-enterprise-document-intelligence-vol-1-2/
+https://towardsdatascience.com/qdrant-turboquant-explained-is-turboquant-the-silver-bullet/
