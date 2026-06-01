@@ -152,3 +152,6 @@ https://machinelearningmastery.com/building-a-multi-tool-gemma-4-agent-with-erro
 https://towardsdatascience.com/meta-cognitive-regulation-might-be-the-most-important-ai-skill-nobody-is-talking-about/
 https://towardsdatascience.com/embeddings-arent-magic-the-predictable-failure-modes-of-rag-retrieval-enterprise-document-intelligence-vol-1-2/
 https://towardsdatascience.com/qdrant-turboquant-explained-is-turboquant-the-silver-bullet/
+https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai
+https://machinelearningmastery.com/serving-multiple-users-at-once-how-continuous-batching-keeps-llm-inference-efficient/
+https://towardsdatascience.com/solving-a-murder-mystery-using-bayesian-inference/
