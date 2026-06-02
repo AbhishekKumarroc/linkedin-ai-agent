@@ -155,3 +155,6 @@ https://towardsdatascience.com/qdrant-turboquant-explained-is-turboquant-the-sil
 https://huggingface.co/blog/nvidia/cosmos-3-for-physical-ai
 https://machinelearningmastery.com/serving-multiple-users-at-once-how-continuous-batching-keeps-llm-inference-efficient/
 https://towardsdatascience.com/solving-a-murder-mystery-using-bayesian-inference/
+https://huggingface.co/blog/JetBrains/mellum2-launch
+https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption
+https://machinelearningmastery.com/the-roadmap-for-mastering-llmops-in-2026/
