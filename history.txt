@@ -158,3 +158,6 @@ https://towardsdatascience.com/solving-a-murder-mystery-using-bayesian-inference
 https://huggingface.co/blog/JetBrains/mellum2-launch
 https://huggingface.co/blog/ibm-research/agent-logic-and-scalable-ai-adoption
 https://machinelearningmastery.com/the-roadmap-for-mastering-llmops-in-2026/
+https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/
+https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/
+https://machinelearningmastery.com/scikit-llm-vs-traditional-text-classifiers-when-should-you-use-an-llm/
