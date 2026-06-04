@@ -161,3 +161,6 @@ https://machinelearningmastery.com/the-roadmap-for-mastering-llmops-in-2026/
 https://www.technologyreview.com/2026/06/02/1137827/rehumanizing-global-health-care-with-agentic-ai/
 https://www.technologyreview.com/2026/06/02/1138227/how-small-businesses-can-leverage-ai/
 https://machinelearningmastery.com/scikit-llm-vs-traditional-text-classifiers-when-should-you-use-an-llm/
+https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots
+https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini
+https://huggingface.co/blog/Hcompany/holo31
