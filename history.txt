@@ -164,3 +164,6 @@ https://machinelearningmastery.com/scikit-llm-vs-traditional-text-classifiers-wh
 https://huggingface.co/blog/Dharma-AI/direct-preference-optimization-beyond-chatbots
 https://huggingface.co/blog/adding-mcp-tools-to-reachy-mini
 https://huggingface.co/blog/Hcompany/holo31
+https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/
+https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety
+https://huggingface.co/blog/ServiceNow-AI/eva-bench-data
