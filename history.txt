@@ -167,3 +167,6 @@ https://huggingface.co/blog/Hcompany/holo31
 https://www.technologyreview.com/2026/06/04/1138391/courts-coping-ai-lawsuits/
 https://huggingface.co/blog/nvidia/nemotron-3-5-content-safety
 https://huggingface.co/blog/ServiceNow-AI/eva-bench-data
+https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/
+https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim
+https://huggingface.co/blog/hf-cli-for-agents
