@@ -170,3 +170,6 @@ https://huggingface.co/blog/ServiceNow-AI/eva-bench-data
 https://www.technologyreview.com/2026/06/05/1138437/the-meta-hack-shows-theres-more-to-ai-security-than-mythos/
 https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim
 https://huggingface.co/blog/hf-cli-for-agents
+https://huggingface.co/blog/build-small-hackathon/thousand-token-wood-sim-v2
+https://machinelearningmastery.com/building-semantic-search-with-transformers-js-and-sentence-embeddings/
+https://machinelearningmastery.com/using-scikit-llm-with-open-source-llms/
