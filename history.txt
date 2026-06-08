@@ -176,3 +176,6 @@ https://machinelearningmastery.com/using-scikit-llm-with-open-source-llms/
 https://huggingface.co/blog/build-small-hackathon/amazingdigitaldentures
 https://towardsdatascience.com/we-should-train-ai-to-betray-its-users/
 https://towardsdatascience.com/building-a-multi-agent-system-in-python/
+https://huggingface.co/blog/openenv-agentic-rl
+https://machinelearningmastery.com/the-practitioners-guide-to-agentops/
+https://towardsdatascience.com/increase-recommendation-systems-precision-with-llm-using-python/
