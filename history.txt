@@ -179,3 +179,6 @@ https://towardsdatascience.com/building-a-multi-agent-system-in-python/
 https://huggingface.co/blog/openenv-agentic-rl
 https://machinelearningmastery.com/the-practitioners-guide-to-agentops/
 https://towardsdatascience.com/increase-recommendation-systems-precision-with-llm-using-python/
+https://www.technologyreview.com/2026/06/09/1137830/learning-to-lead-in-a-hybrid-human-ai-enterprise/
+https://www.technologyreview.com/2026/06/09/1138582/five-things-you-need-to-know-about-ai/
+https://huggingface.co/blog/ServiceNow-AI/code-switching
