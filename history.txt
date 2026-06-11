@@ -185,3 +185,6 @@ https://huggingface.co/blog/ServiceNow-AI/code-switching
 https://huggingface.co/blog/CohereLabs/introducing-north-mini-code
 https://huggingface.co/blog/mishig/spaces-agents-md
 https://huggingface.co/blog/github-ci-hf-jobs
+https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/
+https://huggingface.co/blog/torch-mlp-fusion
+https://machinelearningmastery.com/multi-label-text-classification-with-scikit-llm/
