@@ -188,3 +188,6 @@ https://huggingface.co/blog/github-ci-hf-jobs
 https://www.technologyreview.com/2026/06/11/1138794/google-deepmind-is-worried-about-what-happens-when-millions-of-agents-start-to-interact/
 https://huggingface.co/blog/torch-mlp-fusion
 https://machinelearningmastery.com/multi-label-text-classification-with-scikit-llm/
+https://huggingface.co/blog/allenai/olmo-eval
+https://machinelearningmastery.com/python-concepts-every-ai-engineer-must-master/
+https://machinelearningmastery.com/multimodal-browser-ai-with-transformers-js-for-images-and-speech/
