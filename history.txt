@@ -191,3 +191,6 @@ https://machinelearningmastery.com/multi-label-text-classification-with-scikit-l
 https://huggingface.co/blog/allenai/olmo-eval
 https://machinelearningmastery.com/python-concepts-every-ai-engineer-must-master/
 https://machinelearningmastery.com/multimodal-browser-ai-with-transformers-js-for-images-and-speech/
+https://towardsdatascience.com/larger-context-windows-dont-fix-rag-so-i-built-a-system-that-does/
+https://towardsdatascience.com/parse-pdfs-for-rag-locally-with-docling-rich-tables-no-cloud-upload/
+https://towardsdatascience.com/solving-the-3blue1brown-string-probability-problem-without-ai/
