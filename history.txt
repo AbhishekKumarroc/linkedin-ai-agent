@@ -197,3 +197,6 @@ https://towardsdatascience.com/solving-the-3blue1brown-string-probability-proble
 https://towardsdatascience.com/4-lines-you-must-include-in-your-claude-skill/
 https://towardsdatascience.com/vision-llms-are-pdf-parsers-too-reading-charts-and-diagrams-for-rag/
 https://towardsdatascience.com/gpu-time-slicing-for-concurrent-llm-agents-on-kubernetes/
+https://www.technologyreview.com/2026/06/15/1138983/why-do-south-koreans-love-ai-so-much/
+https://machinelearningmastery.com/ai-agent-tool-design-what-works-and-what-doesnt/
+https://towardsdatascience.com/how-to-effectively-align-with-claude-code/
