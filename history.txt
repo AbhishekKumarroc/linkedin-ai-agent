@@ -203,3 +203,6 @@ https://towardsdatascience.com/how-to-effectively-align-with-claude-code/
 https://www.technologyreview.com/2026/06/16/1138591/data-center-online-quickly-electric-grid-flex/
 https://machinelearningmastery.com/building-an-end-to-end-sentiment-analysis-pipeline-with-scikit-llm/
 https://towardsdatascience.com/drilling-into-ais-financial-sustainability/
+https://huggingface.co/blog/zai-org/glm-52-blog
+https://towardsdatascience.com/run-a-local-llm-with-openclaw-on-your-mac-mini/
+https://towardsdatascience.com/llm-fallbacks-break-agent-pipelines-i-built-the-missing-recovery-layer/
